@@ -1,8 +1,8 @@
-arda = arda or {}
-arda.Utils = arda.Utils or {}
-arda.Points = arda.Points or {}
+vex = vex or {}
+vex.Utils = vex.Utils or {}
+vex.Points = vex.Points or {}
 
-function arda.Utils.createBlip(blipData)
+function vex.Utils.createBlip(blipData)
     local c = blipData.coords
     local blip = AddBlipForCoord(c.x, c.y, c.z)
 
@@ -21,7 +21,7 @@ function arda.Utils.createBlip(blipData)
     return blip
 end
 
-function arda.createPoint(data)
+function vex.createPoint(data)
     if not data or not data.coords then return end;
 
     local point = {
@@ -47,7 +47,7 @@ function arda.createPoint(data)
 
     if point.blip then
         point.blip.coords = vector3(point.blip.coords or point.coords)
-        point._blipId = arda.Utils.createBlip(point.blip)
+        point._blipId = vex.Utils.createBlip(point.blip)
     end
 
     if point.marker then
@@ -117,11 +117,11 @@ function arda.createPoint(data)
         end
     end)
 
-    arda.Points[#arda.Points + 1] = point
+    vex.Points[#vex.Points + 1] = point
     return point
 end
 
-function arda.removePoint(point)
+function vex.removePoint(point)
     if not point or point._removed then return end
     point._removed = true
 
